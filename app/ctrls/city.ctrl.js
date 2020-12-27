@@ -34,7 +34,7 @@ exports.findAll = (req, res) => {
 	console.log(queryObject)
     City.find().limit(parseInt(queryObject.limit)).skip(parseInt(queryObject.skip))
     .then(cities => {
-        res.send(cities);
+        res.send({data: cities});
     }).catch(err => {
         res.status(500).send({
             message: err.message || "Some error occurred while retrieving cities."
