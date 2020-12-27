@@ -5,10 +5,10 @@ const CitySchema = mongoose.Schema({
 		_id: String,
 		name: String,
 		towns: [String],
-		geolocation: { 
+		geolocation: {
 			lat: String, 
-			lon: String, 
-			polygons : [[[SchemaTypes.Double, SchemaTypes.Double]]],
+			lng: String, 
+			polygons : [[SchemaTypes.Double, SchemaTypes.Double]],
 			boundingbox: [String, String, String, String]
 		}  
 	}, {
