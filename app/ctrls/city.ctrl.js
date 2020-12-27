@@ -1,4 +1,5 @@
 const City = require('../models/city.model.js');
+const url = require('url');
 
 // Create and Save a new City
 exports.create = (req, res) => {
@@ -29,7 +30,9 @@ exports.create = (req, res) => {
 // Retrieve and return all cities from the database.
 // Retrieve and return all cities from the database.
 exports.findAll = (req, res) => {
-    City.find()
+	const queryObject = url.parse(req.url,true).query	
+	console.log(queryObject)
+    City.find().limit(parseInt(queryObject.limit)).skip(parseInt(queryObject.skip))
     .then(cities => {
         res.send(cities);
     }).catch(err => {
